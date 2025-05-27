@@ -1,0 +1,77 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f8;
+  color: #333;
+}
+
+header {
+  background-color: #0d47a1;
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  margin: 0;
+}
+
+nav select {
+  padding: 8px;
+  font-size: 16px;
+}
+
+main {
+  padding: 20px;
+  text-align: center;
+}
+
+.banner {
+  background-color: #e3f2fd;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+
+.digimon-box {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.digimon {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  width: 150px;
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+
+.digimon:hover {
+  transform: scale(1.05);
+}
+
+.digimon img {
+  width: 100%;
+  height: auto;
+}
+
+.grid-lista {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+footer {
+  background-color: #0d47a1;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  margin-top: 40px;
+}

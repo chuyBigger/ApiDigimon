@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylos.css">
+    <title>Digimon Digital Moster</title>
+</head>
+<body>
+    <header>
+    <h1>Digimon Digital Monster</h1>
+    <nav>
+        <ul class="menu">
+            <li>Funciones
+                <ul class="submenu">
+                    <li onclick="mostrarTodos(digimonData)">Todos</li>
+                    <li onclick="mostrarPorNivel()">Por Evolución</li>
+                </ul>
+            </li>
+        </ul>
+
+        <!-- 🔽 Submenú de niveles oculto inicialmente -->
+        <ul id="submenu-niveles" class="submenu-niveles">
+            <!-- Niveles se agregan dinámicamente con JS -->
+        </ul>
+    </nav>
+  </header>
+
+  <body>
+    <section class="banner">
+      <h2>Descubre a tu Digimon</h2>
+      <div id="digimon-banner" class="digimon-box"></div>
+    </section>
+
+    <section id="digimon-lista" class="grid-lista"></section>
+
+    <script type="text/javascript" src="app.js"></script>
+    
+
+  </body>
+
+  <footer>
+    <p>&copy; 2025 Jesús Medina Casas - Proyecto ONE</p>
+    <p>Sígueme: 
+      <a href="#">Instagram</a> | 
+      <a href="#">Twitter</a> | 
+      <a href="#">LinkedIn</a>
+    </p>
+  </footer>
+
+</body>
+</html>
