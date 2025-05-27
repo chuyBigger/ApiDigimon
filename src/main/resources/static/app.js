@@ -2,7 +2,7 @@ const digimonContainer = document.getElementById("digimon-lista");
 const banner = document.getElementById("digimon-banner");
 
 // Cargar Digimon y mostrar algunos aleatorios en banner
-fetch("http://localhost:8080/digimon")
+fetch("/digimon")
   .then(res => res.json())
   .then(data => {
     listaDigimones = Object.values(data).flat();
