@@ -1,13 +1,110 @@
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f4f6f8;
-  color: #333;
+/* Simple Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+html {
+    font-size: 16px; /* Base font size */
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: var(--digi-primary-bg);
+    color: var(--digi-text-color);
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* Variables CSS */
+:root {
+    --digi-blue: #0d47a1;
+    --digi-blue-rgb: 13, 71, 161;
+    --digi-yellow: #ffc107;
+    --digi-yellow-rgb: 255, 193, 7;
+    --digi-orange: #fd7e14;
+    --digi-orange-rgb: 253, 126, 20;
+    --digi-primary-bg: #f4f6f8;
+    --digi-text-color: #333;
+    --digi-card-bg: #ffffff;
+    --header-bg: var(--digi-blue);
+    --header-text: white;
+    --footer-bg: var(--digi-blue);
+    --footer-text: white;
+    --button-bg: var(--digi-yellow);
+    --button-text: var(--digi-text-color);
+    --link-color: var(--digi-blue);
+    --link-hover-color: var(--digi-orange);
+}
+
+/* Estilos Base */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif; /* Mantener la fuente actual o elegir una nueva */
+    line-height: 1.6;
+    background-color: var(--digi-primary-bg);
+    color: var(--digi-text-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 0.75em;
+    color: var(--digi-blue);
+}
+
+p {
+    margin-bottom: 1em;
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--link-hover-color);
+    text-decoration: underline;
+}
+
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: 1px solid var(--button-bg);
+    padding: 0.5em 1em;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover {
+    background-color: var(--digi-orange);
+    color: var(--header-text); /* White text on orange hover */
+}
+
+
 header {
-  background-color: #0d47a1;
-  color: white;
+  background-color: var(--header-bg);
+  color: var(--header-text);
   padding: 20px;
   display: flex;
   justify-content: space-between;
@@ -16,12 +113,118 @@ header {
 
 header h1 {
   margin: 0;
+  color: var(--header-text); /* Ensure h1 in header uses header text color */
+  font-size: 1.8em; /* Slightly larger font for the logo/title */
 }
 
-nav select {
-  padding: 8px;
-  font-size: 16px;
+/* Navigation Styles */
+nav {
+    display: flex;
+    align-items: center;
+    flex-grow: 1; /* Allows nav to take available space */
+    justify-content: flex-end; /* Pushes menu and search to the end */
 }
+
+nav ul.main-menu { /* Changed from .menu to .main-menu to match HTML */
+    display: flex;
+    gap: 10px; /* Spacing between menu items */
+    margin-right: 20px; /* Space between menu and search */
+}
+
+nav ul.main-menu li {
+    padding: 10px 15px;
+    color: var(--header-text);
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-weight: 500;
+}
+
+nav ul.main-menu li:hover,
+nav ul.main-menu li:focus, /* Added focus state for accessibility */
+nav ul.main-menu li.active { /* Class for active menu item */
+    background-color: var(--digi-yellow);
+    color: var(--digi-text-color);
+}
+
+/* Search Container Styles */
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+.search-container input[type="search"] {
+    padding: 10px 15px; /* Increased padding */
+    border: none; /* Removed border for a cleaner look */
+    border-radius: 4px 0 0 4px;
+    font-size: 0.9em; /* Adjusted font size */
+    outline: none;
+    min-width: 200px; /* Minimum width */
+    background-color: #f0f0f0; /* Lighter background for input */
+    color: var(--digi-text-color);
+}
+
+.search-container input[type="search"]::placeholder {
+    color: #888; /* Placeholder text color */
+}
+
+.search-container input[type="search"]:focus {
+    background-color: white; /* Whiter background on focus */
+    box-shadow: 0 0 5px rgba(255, 193, 7, 0.5); /* Subtle glow with --digi-yellow */
+}
+
+
+.search-container button {
+    padding: 10px 15px; /* Match input padding */
+    /* background-color: var(--digi-yellow); */ /* General button styles apply */
+    /* color: var(--digi-text-color); */ /* General button styles apply */
+    border: none; /* Remove border */
+    /* border: 1px solid var(--digi-yellow); */ /* Keep if a border is desired, but design is cleaner without */
+    border-left: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    font-size: 0.9em; /* Adjusted font size */
+    /* transition for hover already in general button styles */
+}
+
+/* Responsive Header adjustments */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start; /* Align items to the start */
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: flex-start; /* Align nav items to start */
+        width: 100%; /* Nav takes full width */
+        margin-top: 15px; /* Space between logo and nav */
+    }
+
+    nav ul.main-menu {
+        flex-direction: column;
+        width: 100%; /* Menu items take full width */
+        margin-right: 0; /* Remove right margin */
+        gap: 5px; /* Reduce gap for stacked items */
+    }
+
+    nav ul.main-menu li {
+        text-align: left; /* Align text to the left */
+        width: 100%; /* Make li take full width for easier clicking */
+        padding: 12px 15px; /* Adjust padding for vertical layout */
+    }
+
+    .search-container {
+        width: 100%; /* Search container takes full width */
+        margin-top: 15px; /* Space between menu and search */
+    }
+
+    .search-container input[type="search"] {
+        flex-grow: 1; /* Input takes available space */
+        min-width: 0; /* Reset min-width */
+    }
+}
+
 
 main {
   padding: 20px;
@@ -29,7 +232,7 @@ main {
 }
 
 .banner {
-  background-color: #e3f2fd;
+  background-color: #e3f2fd; /* Consider using a variable if this color is reused */
   padding: 20px;
   border-radius: 10px;
   margin-bottom: 30px;
@@ -43,35 +246,417 @@ main {
 }
 
 .digimon {
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-  padding: 10px;
-  width: 150px;
-  transition: transform 0.2s;
+  background-color: var(--digi-card-bg);
+  border-radius: 12px; /* Slightly more rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(var(--digi-blue-rgb), 0.15); /* Refined shadow */
+  padding: 15px; /* Increased padding */
+  width: 170px; /* Slightly wider cards */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smoother transition */
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content */
+  border: 1px solid transparent; /* Prepare for hover border */
 }
 
 .digimon:hover {
-  transform: scale(1.05);
+  transform: scale(1.07); /* Slightly increased scale */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15), 0 6px 15px rgba(var(--digi-orange-rgb), 0.25);
+  border-color: var(--digi-yellow);
 }
 
 .digimon img {
-  width: 100%;
-  height: auto;
+  width: 100px; /* Fixed width for consistency */
+  height: 100px; /* Fixed height for consistency */
+  object-fit: contain; /* Ensure image fits well, doesn't stretch */
+  margin-bottom: 10px;
+  border-radius: 6px; /* Slight rounding for the image container if needed */
 }
+
+.digimon h4 { /* Name styling */
+  color: var(--digi-blue);
+  font-size: 1.1em;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.digimon p { /* Level styling */
+  color: var(--digi-text-color);
+  font-size: 0.9em;
+  margin-bottom: 0;
+  text-align: center;
+}
+
 
 .grid-lista {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
+  gap: 25px; /* Increased gap */
+  padding: 20px 0; /* Add some padding to the container itself */
 }
 
+/* Carousel Styles */
+.carousel-container { /* Este es #digimon-banner */
+    display: flex;
+    justify-content: center; /* Centra el track si es más pequeño */
+    align-items: center; /* Centra verticalmente las cartas */
+    overflow: hidden;
+    padding: 20px 0; /* Espacio arriba y abajo del carrusel */
+    position: relative; /* Para posicionar botones prev/next si se añaden */
+    min-height: 250px; /* Altura mínima para el carrusel */
+    /* perspective: 1000px; */ /* Descomentar si se usan efectos 3D como rotateY */
+}
+
+.carousel-track {
+    display: flex;
+    align-items: center; /* Alinear cartas verticalmente */
+    transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1); /* Transición suave para el movimiento del track */
+    position: relative;
+}
+
+.carousel-slide {
+    /* Usaremos los estilos de .digimon como base y los ajustaremos */
+    background-color: var(--digi-card-bg);
+    border-radius: 12px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1), 0 4px 10px rgba(var(--digi-blue-rgb),0.1);
+    padding: 15px;
+    width: 150px; /* Ancho de las cartas en el carrusel */
+    height: auto; /* Altura se ajusta al contenido */
+    margin: 0 10px; /* Espacio entre cartas */
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: 2px solid transparent; /* Borde para destacar la central o en hover */
+
+    transform: scale(0.85) translateY(10px); /* No centrales más pequeñas y ligeramente abajo */
+    opacity: 0.7;
+    transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1),
+                opacity 0.5s cubic-bezier(0.25, 0.8, 0.25, 1),
+                box-shadow 0.3s ease-in-out;
+    z-index: 1;
+}
+
+.carousel-slide img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 8px;
+    border-radius: 6px;
+}
+
+.carousel-slide h4 { /* Nombre del Digimon en el carrusel */
+    color: var(--digi-blue);
+    font-size: 1em;
+    margin-bottom: 0; /* Sin margen inferior para el nombre */
+}
+/* No se muestra el nivel en el carrusel */
+
+
+.carousel-slide.central-slide {
+    transform: scale(1.30) translateY(0); /* Carta central más grande y alineada */
+    opacity: 1;
+    z-index: 10; /* Asegurar que la central esté por encima */
+    border-color: var(--digi-yellow); /* Borde amarillo para la central */
+    box-shadow: 0 5px 15px rgba(var(--digi-yellow-rgb),0.3), 0 8px 25px rgba(var(--digi-blue-rgb),0.2);
+}
+
+.carousel-slide:hover {
+    transform: scale(1.25) translateY(-5px); /* Agrandar más en hover y mover ligeramente arriba */
+    opacity: 1;
+    z-index: 20; /* Asegurar que la carta en hover esté por encima de todas */
+    border-color: var(--digi-orange); /* Borde naranja en hover */
+    box-shadow: 0 6px 20px rgba(var(--digi-orange-rgb),0.4);
+}
+
+.carousel-slide.central-slide:hover {
+    transform: scale(1.25) translateY(-5px); /* Mismo efecto de hover para la central */
+}
+
+
+/* Opcional: Estilos para botones de navegación del carrusel si se implementan */
+/*
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(var(--digi-blue-rgb), 0.7);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 30;
+    font-size: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-button:hover {
+    background-color: var(--digi-orange);
+}
+
+.carousel-button.prev {
+    left: 10px;
+}
+
+.carousel-button.next {
+    right: 10px;
+}
+*/
+
+
+/* Responsive adjustments for grid items */
+@media (max-width: 600px) {
+  .digimon {
+    width: 140px; /* Smaller cards on small screens */
+  }
+  .digimon img {
+    width: 80px;
+    height: 80px;
+  }
+  .grid-lista {
+    gap: 15px;
+  }
+}
+
+/* Responsive adjustments for carousel slides */
+@media (max-width: 480px) {
+    .carousel-slide {
+        width: 120px; /* Reducir ancho de cartas */
+        margin: 0 5px; /* Reducir margen entre cartas */
+    }
+    .carousel-slide img {
+        width: 60px;
+        height: 60px;
+    }
+    .carousel-slide h4 {
+        font-size: 0.9em;
+    }
+    /* Ajustar escala para que no se vean tan pequeñas o tan grandes en relación al nuevo tamaño */
+    .carousel-slide.central-slide {
+        transform: scale(1.1) translateY(0);
+    }
+    .carousel-slide { /* Aplica a no centrales */
+        transform: scale(0.8) translateY(5px);
+    }
+    .carousel-slide:hover { /* Aplica a todas en hover */
+        transform: scale(1.2) translateY(-2px);
+    }
+     .carousel-slide.central-slide:hover { /* Específico para la central en hover, si se necesita diferenciar */
+        transform: scale(1.2) translateY(-2px);
+    }
+}
+
+
+/* Submenu para niveles */
+#submenu-niveles {
+    display: none; /* JS lo mostrará */
+    flex-wrap: wrap; /* Permitir que los items pasen a la siguiente línea */
+    justify-content: center;
+    gap: 12px; /* Espacio entre items */
+    margin: 25px auto; /* Margen superior/inferior y centrado */
+    padding: 15px;
+    background-color: rgba(var(--digi-blue-rgb), 0.05); /* Fondo muy sutil con el azul del tema */
+    border-radius: 8px;
+    max-width: 90%; /* Evitar que ocupe todo el ancho en pantallas grandes */
+}
+
+#submenu-niveles li {
+    padding: 10px 18px; /* Más padding */
+    background-color: var(--digi-card-bg); /* Fondo de tarjeta para consistencia */
+    color: var(--digi-blue); /* Texto azul */
+    border: 1px solid var(--digi-blue); /* Borde azul */
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+#submenu-niveles li:hover {
+    background-color: var(--digi-yellow);
+    color: var(--digi-text-color);
+    border-color: var(--digi-yellow);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(var(--digi-yellow-rgb), 0.3);
+}
+
+/* Estilo para el nivel activo en el submenú - ya existe .active-level, se revisa si necesita ajuste */
+#submenu-niveles li.active-level {
+    background-color: var(--digi-orange);
+    color: white;
+    border-color: var(--digi-orange); /* Asegurar que el borde coincida */
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(var(--digi-orange-rgb), 0.4);
+    transform: translateY(0); /* Evitar que el activo se mueva en hover si ya estaba transformado */
+}
+
+/* Contenedor para los controles de ordenación */
+.sort-controls-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px; /* Espacio antes de la lista de Digimon */
+}
+
+/* Estilo para los botones de ordenación */
+.sort-button {
+    background-color: var(--digi-card-bg);
+    color: var(--digi-blue);
+    border: 1px solid var(--digi-blue);
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95em;
+    font-weight: 500;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sort-button:hover,
+.sort-button.active-sort { /* Estilo para botón activo o en hover */
+    background-color: var(--digi-yellow);
+    color: var(--digi-text-color);
+    border-color: var(--digi-yellow);
+    box-shadow: 0 2px 8px rgba(var(--digi-yellow-rgb), 0.3);
+}
+
+/* Opcional: Si quieres un estilo ligeramente diferente para el botón de ordenación activo */
+.sort-button.active-sort {
+    background-color: var(--digi-orange);
+    color: white;
+    border-color: var(--digi-orange);
+}
+
+
 footer {
-  background-color: #0d47a1;
-  color: white;
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
   text-align: center;
   padding: 15px;
   margin-top: 40px;
+}
+
+footer a {
+    color: var(--digi-yellow); /* Links en el footer con color amarillo */
+}
+
+footer a:hover {
+    color: var(--digi-orange); /* Hover de links en el footer */
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it's on top */
+    animation: fadeInOverlay 0.3s ease-out;
+}
+
+.modal-content {
+    background-color: var(--digi-card-bg); /* Use card background for consistency */
+    padding: 30px;
+    border-radius: 12px; /* Consistent rounding */
+    box-shadow: 0 5px 20px rgba(var(--digi-blue-rgb), 0.3); /* Thematic shadow */
+    text-align: center;
+    position: relative;
+    max-width: 450px; /* Slightly wider modal */
+    width: 90%;
+    border-top: 5px solid var(--digi-yellow); /* Thematic accent */
+    animation: slideInModal 0.4s ease-out;
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px; /* Adjusted position */
+    right: 15px; /* Adjusted position */
+    font-size: 28px; /* Larger for easier clicking */
+    font-weight: bold;
+    color: var(--digi-orange); /* Thematic color */
+    cursor: pointer;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.modal-close:hover {
+    color: var(--digi-blue); /* Hover color */
+    transform: scale(1.1);
+}
+
+.modal-content h2 { /* Digimon Name in Modal */
+    margin-top: 0;
+    margin-bottom: 15px; /* Space below title */
+    color: var(--digi-blue);
+    font-size: 1.8em;
+}
+
+.modal-content img {
+    width: 150px; /* Larger image in modal */
+    height: 150px;
+    object-fit: contain;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px; /* More space below image */
+    border: 3px solid var(--digi-yellow); /* Thematic border */
+    border-radius: 8px;
+    background-color: #f9f9f9; /* Light bg for image if transparent */
+}
+
+.modal-content p {
+    margin-bottom: 10px; /* Increased spacing for details */
+    color: var(--digi-text-color);
+    text-align: left;
+    font-size: 1.1em; /* Slightly larger text in modal */
+}
+
+.modal-content p strong {
+    color: var(--digi-blue); /* Highlight labels */
+    margin-right: 8px;
+}
+
+
+/* Keyframe animations for modal */
+@keyframes fadeInOverlay {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInModal {
+    from { transform: translateY(-50px) scale(0.95); opacity: 0; }
+    to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+/* Optional: Animation for modal closing (add with JS if needed) */
+/*
+.modal-overlay.closing {
+    animation: fadeOutOverlay 0.3s ease-in forwards;
+}
+.modal-content.closing {
+    animation: slideOutModal 0.3s ease-in forwards;
+}
+
+@keyframes fadeOutOverlay {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+@keyframes slideOutModal {
+    from { transform: translateY(0) scale(1); opacity: 1; }
+    to { transform: translateY(50px) scale(0.95); opacity: 0; }
+}
+*/
+
+/* Active Level in Submenu */
+#submenu-niveles li.active-level {
+    background-color: var(--digi-orange);
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 0 8px rgba(0,0,0,0.2);
 }

@@ -5,6 +5,8 @@ Proyecto educativo que permite visualizar Digimon de forma interactiva. Utiliza 
 🔗 Versión desplegada:  
 👉 [https://apidigimon-jh8b.onrender.com](https://apidigimon-jh8b.onrender.com)
 
+Esta version de hospedaje web service es render a travez de la version gratuita por lo tanto se duerme si no tiene uso y la primera solicitud tarde 45 a 60 segundos en lo que el deploy inicia asi que si dan clin posiblemte la primera vez no fuinciona si no se esta ejecutando pido un poco de compresion y si es el caso espera para que puedas ver el proyecto 
+
 ---
 
 ## 📦 Tecnologías utilizadas

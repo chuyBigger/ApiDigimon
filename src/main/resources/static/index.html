@@ -4,49 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="stylos.css">
-    <title>Digimon Digital Moster</title>
+    <title>Digimon Digital Monster</title>
 </head>
 <body>
     <header>
-    <h1>Digimon Digital Monster</h1>
-    <nav>
-        <ul class="menu">
-            <li>Funciones
-                <ul class="submenu">
-                    <li onclick="mostrarTodos(digimonData)">Todos</li>
-                    <li onclick="mostrarPorNivel()">Por Evolución</li>
+        <h1>Digimon Digital Monster</h1> <!-- Hay qu eponerle un logo -->
+        <nav>
+            <ul class="menu main-menu">
+                <li id="menu-item-todos">Todos</li>
+                <li id="menu-item-por-nivel">Por Nivel</li>
+            </ul>
+            <div class="search-container">
+                <input type="search" id="search-input" placeholder="Buscar Digimon...">
+                <button id="search-button">Buscar</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="banner" id="banner-section">
+            <h2>Descubre a tu Digimon</h2>
+            <div id="digimon-banner" class="digimon-box carousel-container">
+                <!-- El contenido del carrusel se generará aquí por JS -->
+            </div>
+        </section>
+
+        <section id="digimon-content">
+            <!-- Contenido dinámico de Digimon (todos, por nivel, resultados de búsqueda) -->
+            <div id="vista-por-nivel-container" style="display:none;"> 
+                <h2>Digimon por Nivel</h2>
+                <ul id="submenu-niveles" class="submenu-niveles">
+                    <!-- Niveles se agregan dinámicamente con JS -->
                 </ul>
-            </li>
-        </ul>
+                <div class="sort-controls-container">
+                    <button id="sort-level-alpha-asc" class="sort-button">Ordenar A-Z</button>
+                    <button id="sort-level-alpha-desc" class="sort-button">Ordenar Z-A</button>
+                </div>
+                <div id="digimon-lista-nivel" class="grid-lista">
+                    <!-- Lista de Digimon por nivel se mostrará aquí -->
+                </div>
+            </div>
+            <div id="digimon-lista-todos" class="grid-lista"> <!-- Container for "Todos" view -->
+                <!-- Lista de Digimon se mostrará aquí -->
+            </div>
+            <div id="digimon-lista-resultados" class="grid-lista" style="display:none;">
+                <!-- Lista de resultados de búsqueda se mostrará aquí -->
+            </div>
+        </section>
+    </main>
 
-        <!-- 🔽 Submenú de niveles oculto inicialmente -->
-        <ul id="submenu-niveles" class="submenu-niveles">
-            <!-- Niveles se agregan dinámicamente con JS -->
-        </ul>
-    </nav>
-  </header>
-
-  <body>
-    <section class="banner">
-      <h2>Descubre a tu Digimon</h2>
-      <div id="digimon-banner" class="digimon-box"></div>
-    </section>
-
-    <section id="digimon-lista" class="grid-lista"></section>
+    <footer>
+        <p>&copy; 2025 Jesús Medina Casas - Proyecto ONE AluraLatam</p>
+        <p>Sígueme:            
+            <a href="https://github.com/chuyBigger">GitHub</a> |
+            <a href="https://www.linkedin.com/in/jesus-medina-casas/">LinkedIn</a>
+        </p>
+    </footer>
 
     <script type="text/javascript" src="app.js"></script>
-    
-
-  </body>
-
-  <footer>
-    <p>&copy; 2025 Jesús Medina Casas - Proyecto ONE</p>
-    <p>Sígueme: 
-      <a href="#">Instagram</a> | 
-      <a href="#">Twitter</a> | 
-      <a href="#">LinkedIn</a>
-    </p>
-  </footer>
-
 </body>
 </html>
