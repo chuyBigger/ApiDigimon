@@ -63,7 +63,7 @@ function inicializarCarrusel() {
     if (listaDigimones.length === 0 || !bannerElement) return;
     stopCarouselRotation();
 
-    const shuffled = [...listaDigimones].sort(() => 0.5 - Math.random());
+    const shuffled = [...listaDigimones].sort(() => 0.3 - Math.random());
     carouselDigimons = shuffled.slice(0, Math.min(CAROUSEL_SIZE, listaDigimones.length));
 
     const actualCarouselSize = carouselDigimons.length;
