@@ -1,6 +1,9 @@
 # Digimon Digital Monster Viewer 🐉
 
-Este proyecto permite visualizar cartas de Digimon utilizando una API externa. Se compone de un backend en Java con Spring Boot que actúa como intermediario y un frontend simple en HTML/CSS/JS que presenta los Digimon y sus evoluciones de forma visual e interactiva.
+Proyecto educativo que permite visualizar Digimon de forma interactiva. Utiliza una API pública como fuente de datos y está construido con Java (Spring Boot) en el backend y HTML/CSS/JavaScript en el frontend. Está **empaquetado con Docker** y desplegado automáticamente en **Render**.
+
+🔗 Versión desplegada:  
+👉 [https://apidigimon-jh8b.onrender.com](https://apidigimon-jh8b.onrender.com)
 
 ---
 
@@ -10,35 +13,38 @@ Este proyecto permite visualizar cartas de Digimon utilizando una API externa. S
 - Java 17
 - Spring Boot
 - Maven
-- Jackson (JSON parser)
-- CORS habilitado para conexión desde frontend local
+- Jackson (parser JSON)
+- Docker
+- Render (deploy)
+- CORS habilitado
 
 ### Frontend
 - HTML5
-- CSS3 (archivo `stylos.css`)
-- JavaScript (archivo `app.js`)
-- Fetch API para consumir datos
+- CSS3 (`stylos.css`)
+- JavaScript (`app.js`)
+- Fetch API
 
 ---
 
-## 🔧 Estructura del proyecto
+## 🗂️ Estructura actual del proyecto
 
 ```
 DigimonProject/
 │
-├── backend/
-│   ├── src/main/java/
-│   │   └── com.example.digimon/
-│   │       ├── DigimonController.java
-│   │       ├── DigimonModel.java
-│   │       └── DigimonService.java
-│   └── pom.xml
+├── src/main/java/com/example/dataDigimon/
+│   ├── controller/ApiDigimonController.java
+│   ├── model/Digimon.java
+│   └── service/DigimonService.java
 │
-├── frontend/
+├── src/main/resources/static/
 │   ├── index.html
 │   ├── stylos.css
 │   └── app.js
 │
+├── src/main/resources/application.properties
+├── Dockerfile
+├── .dockerignore
+├── pom.xml
 └── README.md
 ```
 
@@ -46,56 +52,63 @@ DigimonProject/
 
 ## 🚀 Cómo ejecutar el proyecto
 
-### 1. Backend
+### ✅ Opción 1: Usar Docker (recomendado)
 
-1. Clona el repositorio.
-2. Abre la carpeta `backend` con tu IDE.
-3. Asegúrate de tener Java 17 y Maven instalados.
-4. Ejecuta la aplicación (`DigimonProjectApplication`).
-
-El backend corre en: `http://localhost:8080/digimon`
-
-Este endpoint consulta la API pública de Digimon:
-
-```
-https://digimon-api.vercel.app/api/digimon
+```bash
+docker build -t digimon-app .
+docker run -p 8080:8080 digimon-app
 ```
 
-Y la estructura del JSON que retorna es reorganizada por nivel de evolución.
-
-### 2. Frontend
-
-1. Abre el archivo `index.html` directamente en tu navegador.
-2. El frontend se conecta automáticamente al backend en `localhost:8080`.
+Accede en: [http://localhost:8080](http://localhost:8080)
 
 ---
 
-## 🧠 Funcionalidades implementadas
+### 🧪 Opción 2: Manual (desde el IDE)
 
-- Mostrar todos los Digimon en tarjetas.
-- Mostrar Digimon aleatorios en el banner central.
-- Filtrar por tipo de evolución desde el menú.
-- Menú desplegable limpio y visual con CSS.
+1. Clona el proyecto
+2. Abre el proyecto en IntelliJ o tu IDE preferido
+3. Asegúrate de tener Java 17 y Maven instalados
+4. Ejecuta la clase principal: `ApiDigimonApplication.java`
+5. Abre `http://localhost:8080` en tu navegador
 
 ---
 
-## 🧩 Planes futuros
+## 🌐 Despliegue en Render
 
-- Agregar vista de detalle individual al hacer clic en cada Digimon.
-- Mostrar cadena de evolución visual.
-- Posibilidad de buscar por nombre.
-- Adaptar esta base para futuras APIs como la de Pokémon TCG.
+- Se utilizó un `Dockerfile` con dos etapas (`build` y `runtime`)
+- El backend sirve también los archivos `index.html`, `stylos.css` y `app.js` desde la carpeta `static`
+- Se usó `fetch("/digimon")` (ruta relativa) para que funcione en local y producción
+
+---
+
+## 🔧 Funcionalidades
+
+- 🎴 Muestra Digimon aleatorios en un banner inicial
+- 🧾 Lista todos los Digimon con nombre, imagen y nivel
+- 🔎 Filtro por nivel de evolución desde menú desplegable
+- 💬 Mostrar detalles al hacer clic en un Digimon
+
+---
+
+## ✨ Planes futuros
+
+- Vista detallada individual
+- Búsqueda por nombre
+- Cadena de evolución
+- Animaciones visuales
+- Mejorar diseño responsive
 
 ---
 
 ## 👨‍💻 Autor
 
-**Jesús Medina Casas** – Desarrollador en formación  
-ONE - Oracle Next Education | Alura Latam
+**Jesús Medina Casas**  
+ONE - Oracle Next Education | Alura Latam  
+📍 México
 
 ---
 
 ## 📜 Licencia
 
-Proyecto educativo sin fines de lucro.  
-Puedes reutilizar el código con fines personales o de aprendizaje.
+Proyecto educativo y sin fines de lucro.  
+Puedes reutilizar este código para aprender, practicar o inspirarte.
